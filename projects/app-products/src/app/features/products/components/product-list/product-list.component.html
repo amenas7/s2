@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 table-responsive">
+          <table class="table table-bordered table-desing tabla-hover">
+              <thead>
+                  <tr>
+                      <th scope="col" width="50">#</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Category</th>
+                      <th scope="col" class="text-center" width="90">Acción</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <!-- @for (product of products; track $index) {-->
+                  @for (product of products$ | async; track $index) {
+                  <tr >
+                      <th scope="row">{{$index+1}}</th>
+                      <td>{{ product.id }}</td>
+                      <td>{{ product.title }}</td>
+                      <td class="price">{{ product.price | currency}}</td>
+                      <td>{{ product.category}}</td>
+                      <td class="text-center">
+                        <a class="btn btn-sm btn-outline-secondary me-2" [routerLink]="['/products/details/',product.id]"  title="Details" >
+                          <i class="bi bi-pen-fill"></i>
+                        </a>
+                      </td>
+                  </tr>
+                }
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
